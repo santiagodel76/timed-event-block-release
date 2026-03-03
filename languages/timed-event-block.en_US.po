@@ -1,0 +1,125 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Timed Event Block 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-12 00:00+0000\n"
+"PO-Revision-Date: 2026-02-12 00:00+0000\n"
+"Last-Translator: Codex\n"
+"Language-Team: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: timed-event-block\n"
+
+msgid "Event Time:"
+msgstr "Event Time:"
+
+msgid "Starts in:"
+msgstr "Starts in:"
+
+msgid "Start creating content here..."
+msgstr "Start creating content here..."
+
+msgid "Select start date and time in sidebar"
+msgstr "Select start date and time in sidebar"
+
+msgid "Event Settings"
+msgstr "Event Settings"
+
+msgid "Start date and time"
+msgstr "Start date and time"
+
+msgid "Duration (minutes)"
+msgstr "Duration (minutes)"
+
+msgid "Hide when ended"
+msgstr "Hide when ended"
+
+msgid "Countdown"
+msgstr "Countdown"
+
+msgid "Countdown Settings"
+msgstr "Countdown Settings"
+
+msgid "Target mode"
+msgstr "Target mode"
+
+msgid "Countdown to start"
+msgstr "Countdown to start"
+
+msgid "Countdown to end"
+msgstr "Countdown to end"
+
+msgid "Show days"
+msgstr "Show days"
+
+msgid "Separator"
+msgstr "Separator"
+
+msgid "Example: : or |"
+msgstr "Example: : or |"
+
+msgid "Day label"
+msgstr "Day label"
+
+msgid "Hour label"
+msgstr "Hour label"
+
+msgid "Minute label"
+msgstr "Minute label"
+
+msgid "Second label"
+msgstr "Second label"
+
+msgid "Active label"
+msgstr "Active label"
+
+msgid "Ended label"
+msgstr "Ended label"
+
+msgid "Active color"
+msgstr "Active color"
+
+msgid "Ended color"
+msgstr "Ended color"
+
+msgid "Event Time"
+msgstr "Event Time"
+
+msgid "Time Settings"
+msgstr "Time Settings"
+
+msgid "Format"
+msgstr "Format"
+
+msgid "Site default"
+msgstr "Site default"
+
+msgid "Custom"
+msgstr "Custom"
+
+msgid "Custom format"
+msgstr "Custom format"
+
+msgid "Example: H:i or g:i a"
+msgstr "Example: H:i or g:i a"
+
+msgid "Event Date"
+msgstr "Event Date"
+
+msgid "Date Settings"
+msgstr "Date Settings"
+
+msgid "Example: d/m/Y or Y-m-d"
+msgstr "Example: d/m/Y or Y-m-d"
+
+msgid "Event time status: %s"
+msgstr "Event time status: %s"
+
+msgid "Event countdown: %s"
+msgstr "Event countdown: %s"
+
+msgid "Event countdown status: %s"
+msgstr "Event countdown status: %s"

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "timed-event-block/timed-event",
+  "title": "Timed Event (Container)",
+  "category": "widgets",
+  "icon": "calendar-alt",
+  "description": "Server-side scheduled event item.",
+  "textdomain": "timed-event-block",
+  "attributes": {
+    "start": {
+      "type": "string"
+    },
+    "durationMinutes": {
+      "type": "number",
+      "default": 60
+    },
+    "hideWhenEnded": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "providesContext": {
+    "timed-event-block/start": "start",
+    "timed-event-block/durationMinutes": "durationMinutes"
+  },
+  "supports": {
+    "html": false,
+    "spacing": {
+      "margin": true,
+      "padding": true,
+      "blockGap": true
+    },
+    "color": {
+      "text": true,
+      "background": true,
+      "gradients": true,
+      "link": true
+    },
+    "border": {
+      "color": true,
+      "radius": true,
+      "style": true,
+      "width": true
+    },
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true,
+      "textAlign": true
+    },
+    "dimensions": {
+      "minHeight": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "viewScript": "file:./view.js",
+  "render": "file:./render.php",
+  "editorStyle": "file:./index.css"
+}
+

@@ -1,0 +1,125 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Timed Event Block 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-12 00:00+0000\n"
+"PO-Revision-Date: 2026-02-12 00:00+0000\n"
+"Last-Translator: Codex\n"
+"Language-Team: Spanish (Argentina)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es_AR\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: timed-event-block\n"
+
+msgid "Event Time:"
+msgstr "Hora del evento:"
+
+msgid "Starts in:"
+msgstr "Comienza en:"
+
+msgid "Start creating content here..."
+msgstr "Empieza a crear contenido aquí..."
+
+msgid "Select start date and time in sidebar"
+msgstr "Selecciona fecha y hora de inicio en la barra lateral"
+
+msgid "Event Settings"
+msgstr "Ajustes del evento"
+
+msgid "Start date and time"
+msgstr "Fecha y hora de inicio"
+
+msgid "Duration (minutes)"
+msgstr "Duración (minutos)"
+
+msgid "Hide when ended"
+msgstr "Ocultar cuando finaliza"
+
+msgid "Countdown"
+msgstr "Cuenta regresiva"
+
+msgid "Countdown Settings"
+msgstr "Ajustes de cuenta regresiva"
+
+msgid "Target mode"
+msgstr "Modo objetivo"
+
+msgid "Countdown to start"
+msgstr "Cuenta regresiva al inicio"
+
+msgid "Countdown to end"
+msgstr "Cuenta regresiva al final"
+
+msgid "Show days"
+msgstr "Mostrar días"
+
+msgid "Separator"
+msgstr "Separador"
+
+msgid "Example: : or |"
+msgstr "Ejemplo: : o |"
+
+msgid "Day label"
+msgstr "Etiqueta de días"
+
+msgid "Hour label"
+msgstr "Etiqueta de horas"
+
+msgid "Minute label"
+msgstr "Etiqueta de minutos"
+
+msgid "Second label"
+msgstr "Etiqueta de segundos"
+
+msgid "Active label"
+msgstr "Etiqueta de activo"
+
+msgid "Ended label"
+msgstr "Etiqueta de finalizado"
+
+msgid "Active color"
+msgstr "Color activo"
+
+msgid "Ended color"
+msgstr "Color finalizado"
+
+msgid "Event Time"
+msgstr "Hora del evento"
+
+msgid "Time Settings"
+msgstr "Ajustes de hora"
+
+msgid "Format"
+msgstr "Formato"
+
+msgid "Site default"
+msgstr "Predeterminado del sitio"
+
+msgid "Custom"
+msgstr "Personalizado"
+
+msgid "Custom format"
+msgstr "Formato personalizado"
+
+msgid "Example: H:i or g:i a"
+msgstr "Ejemplo: H:i o g:i a"
+
+msgid "Event Date"
+msgstr "Fecha del evento"
+
+msgid "Date Settings"
+msgstr "Ajustes de fecha"
+
+msgid "Example: d/m/Y or Y-m-d"
+msgstr "Ejemplo: d/m/Y o Y-m-d"
+
+msgid "Event time status: %s"
+msgstr "Estado de hora del evento: %s"
+
+msgid "Event countdown: %s"
+msgstr "Cuenta regresiva del evento: %s"
+
+msgid "Event countdown status: %s"
+msgstr "Estado de cuenta regresiva del evento: %s"

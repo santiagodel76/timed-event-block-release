@@ -1,0 +1,55 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "timed-event-block/date",
+  "title": "Event Date",
+  "category": "widgets",
+  "icon": "calendar-alt",
+  "description": "Displays event date from parent Timed Event block.",
+  "textdomain": "timed-event-block",
+  "ancestor": [
+    "timed-event-block/timed-event"
+  ],
+  "usesContext": [
+    "timed-event-block/start"
+  ],
+  "attributes": {
+    "formatMode": {
+      "type": "string",
+      "default": "site"
+    },
+    "customFormat": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "supports": {
+    "html": false,
+    "spacing": {
+      "margin": true,
+      "padding": true
+    },
+    "color": {
+      "text": true,
+      "background": true,
+      "gradients": true,
+      "link": true
+    },
+    "typography": {
+      "fontSize": true,
+      "lineHeight": true,
+      "textAlign": true
+    },
+    "border": {
+      "color": true,
+      "radius": true,
+      "style": true,
+      "width": true
+    },
+    "dimensions": {
+      "minHeight": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "render": "file:./render.php"
+}
