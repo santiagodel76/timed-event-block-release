@@ -12,18 +12,30 @@ function formatCountdown( totalSeconds, showDays, separator, labels ) {
 	const hours = Math.floor( ( safeSeconds % 86400 ) / 3600 );
 	const minutes = Math.floor( ( safeSeconds % 3600 ) / 60 );
 	const seconds = safeSeconds % 60;
-	const pad = ( value ) => String( value ).padStart( 2, '0' );
+	const raw = ( value ) => String( value );
 	const dayLabel = labels?.day || 'd';
+	const dayLabelSingular = labels?.daySingular || dayLabel;
 	const hourLabel = labels?.hour || 'h';
+	const hourLabelSingular = labels?.hourSingular || hourLabel;
 	const minuteLabel = labels?.minute || 'm';
+	const minuteLabelSingular = labels?.minuteSingular || minuteLabel;
 	const secondLabel = labels?.second || 's';
+	const secondLabelSingular = labels?.secondSingular || secondLabel;
+	const unitLabel = ( value, plural, singular ) => ( value === 1 ? singular : plural );
 
-	if ( showDays ) {
-		return `${ days } ${ dayLabel }${ separator }${ pad( hours ) } ${ hourLabel }${ separator }${ pad( minutes ) } ${ minuteLabel }${ separator }${ pad( seconds ) } ${ secondLabel }`;
+	if ( showDays && days > 0 ) {
+		return `${ days } ${ unitLabel( days, dayLabel, dayLabelSingular ) }${ separator }${ raw( hours ) } ${ unitLabel( hours, hourLabel, hourLabelSingular ) }${ separator }${ raw( minutes ) } ${ unitLabel( minutes, minuteLabel, minuteLabelSingular ) }${ separator }${ raw( seconds ) } ${ unitLabel( seconds, secondLabel, secondLabelSingular ) }`;
 	}
 
-	const totalHours = Math.floor( safeSeconds / 3600 );
-	return `${ pad( totalHours ) } ${ hourLabel }${ separator }${ pad( minutes ) } ${ minuteLabel }${ separator }${ pad( seconds ) } ${ secondLabel }`;
+	if ( hours > 0 ) {
+		return `${ raw( hours ) } ${ unitLabel( hours, hourLabel, hourLabelSingular ) }${ separator }${ raw( minutes ) } ${ unitLabel( minutes, minuteLabel, minuteLabelSingular ) }${ separator }${ raw( seconds ) } ${ unitLabel( seconds, secondLabel, secondLabelSingular ) }`;
+	}
+
+	if ( minutes > 0 ) {
+		return `${ raw( minutes ) } ${ unitLabel( minutes, minuteLabel, minuteLabelSingular ) }${ separator }${ raw( seconds ) } ${ unitLabel( seconds, secondLabel, secondLabelSingular ) }`;
+	}
+
+	return `${ raw( seconds ) } ${ unitLabel( seconds, secondLabel, secondLabelSingular ) }`;
 }
 
 registerBlockType( metadata.name, {
@@ -35,9 +47,15 @@ registerBlockType( metadata.name, {
 			showDays = true,
 			separator = ':',
 			dayLabel = 'd',
+			dayLabelSingular = '',
 			hourLabel = 'h',
+			hourLabelSingular = '',
 			minuteLabel = 'm',
+			minuteLabelSingular = '',
 			secondLabel = 's',
+			secondLabelSingular = '',
+			prefixLabel = '',
+			suffixLabel = '',
 			activeLabel = __( 'Active', 'timed-event-block' ),
 			endedLabel = __( 'Ended', 'timed-event-block' ),
 			activeColor = '#166534',
@@ -86,12 +104,19 @@ registerBlockType( metadata.name, {
 				}
 
 				if ( remaining > 0 ) {
-					previewText = formatCountdown( remaining, showDays, separator, {
+					const countdownText = formatCountdown( remaining, showDays, separator, {
 						day: dayLabel,
+						daySingular: dayLabelSingular,
 						hour: hourLabel,
+						hourSingular: hourLabelSingular,
 						minute: minuteLabel,
+						minuteSingular: minuteLabelSingular,
 						second: secondLabel,
+						secondSingular: secondLabelSingular,
 					} );
+					const prefixText = prefixLabel ? `${ prefixLabel } ` : '';
+					const suffixText = suffixLabel ? ` ${ suffixLabel }` : '';
+					previewText = `${ prefixText }${ countdownText }${ suffixText }`;
 				} else if ( previewState === 'active' ) {
 					previewText = activeLabel;
 				} else {
@@ -137,32 +162,74 @@ registerBlockType( metadata.name, {
 							help={ __( 'Example: : or |', 'timed-event-block' ) }
 						/>
 						<TextControl
-							label={ __( 'Day label', 'timed-event-block' ) }
+							label={ __( 'Day label (plural)', 'timed-event-block' ) }
 							value={ dayLabel }
 							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							onChange={ ( value ) => setAttributes( { dayLabel: value || 'd' } ) }
 						/>
 						<TextControl
-							label={ __( 'Hour label', 'timed-event-block' ) }
+							label={ __( 'Day label (singular)', 'timed-event-block' ) }
+							value={ dayLabelSingular }
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+							onChange={ ( value ) => setAttributes( { dayLabelSingular: value || '' } ) }
+						/>
+						<TextControl
+							label={ __( 'Hour label (plural)', 'timed-event-block' ) }
 							value={ hourLabel }
 							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							onChange={ ( value ) => setAttributes( { hourLabel: value || 'h' } ) }
 						/>
 						<TextControl
-							label={ __( 'Minute label', 'timed-event-block' ) }
+							label={ __( 'Hour label (singular)', 'timed-event-block' ) }
+							value={ hourLabelSingular }
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+							onChange={ ( value ) => setAttributes( { hourLabelSingular: value || '' } ) }
+						/>
+						<TextControl
+							label={ __( 'Minute label (plural)', 'timed-event-block' ) }
 							value={ minuteLabel }
 							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							onChange={ ( value ) => setAttributes( { minuteLabel: value || 'm' } ) }
 						/>
 						<TextControl
-							label={ __( 'Second label', 'timed-event-block' ) }
+							label={ __( 'Minute label (singular)', 'timed-event-block' ) }
+							value={ minuteLabelSingular }
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+							onChange={ ( value ) => setAttributes( { minuteLabelSingular: value || '' } ) }
+						/>
+						<TextControl
+							label={ __( 'Second label (plural)', 'timed-event-block' ) }
 							value={ secondLabel }
 							__next40pxDefaultSize
 							__nextHasNoMarginBottom
 							onChange={ ( value ) => setAttributes( { secondLabel: value || 's' } ) }
+						/>
+						<TextControl
+							label={ __( 'Second label (singular)', 'timed-event-block' ) }
+							value={ secondLabelSingular }
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+							onChange={ ( value ) => setAttributes( { secondLabelSingular: value || '' } ) }
+						/>
+						<TextControl
+							label={ __( 'Prefix label', 'timed-event-block' ) }
+							value={ prefixLabel }
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+							onChange={ ( value ) => setAttributes( { prefixLabel: value || '' } ) }
+						/>
+						<TextControl
+							label={ __( 'Suffix label', 'timed-event-block' ) }
+							value={ suffixLabel }
+							__next40pxDefaultSize
+							__nextHasNoMarginBottom
+							onChange={ ( value ) => setAttributes( { suffixLabel: value || '' } ) }
 						/>
 						<TextControl
 							label={ __( 'Active label', 'timed-event-block' ) }

@@ -4,7 +4,7 @@ Tags: gutenberg, event, schedule, countdown, fse
 Requires at least: 6.5
 Tested up to: 6.9
 Requires PHP: 7.4
-Stable tag: 0.1.1
+Stable tag: 0.1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -123,6 +123,12 @@ Yes. Labels are user-editable, and static UI strings are prepared with WordPress
 
 == Changelog ==
 
+= 0.1.2 =
+* Improved Event Countdown output by hiding exhausted leading units (days/hours/minutes) when they reach zero.
+* Added editable `Prefix label` and `Suffix label` for countdown context text, rendered only while countdown is active.
+* Added singular and plural unit labels for day/hour/minute/second with automatic unit selection based on value.
+* Removed leading zero padding from countdown units for cleaner numeric output.
+
 = 0.1.1 =
 * Initial public release.
 * Added Timed Event parent block with server-side scheduling logic.
@@ -132,6 +138,9 @@ Yes. Labels are user-editable, and static UI strings are prepared with WordPress
 * Added native style support for spacing, color, typography, border, and dimensions.
 
 == Upgrade Notice ==
+
+= 0.1.2 =
+Improves Event Countdown text rendering with prefix/suffix labels, singular/plural unit labels, hidden exhausted leading units, and no leading zero padding.
 
 = 0.1.1 =
 This release includes the approved wp.org review adjustments and the initial public release metadata alignment.

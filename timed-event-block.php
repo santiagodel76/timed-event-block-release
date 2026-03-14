@@ -3,7 +3,7 @@
  * Plugin Name: Timed Event Block
  * Plugin URI: https://wordpress.org/plugins/timed-event-block/
  * Description: Gutenberg block to schedule event content visibility, display contextual date/time/countdown child blocks, and build schedule listings.
- * Version: 0.1.1
+ * Version: 0.1.2
  * Requires at least: 6.5
  * Requires PHP: 7.4
  * Author: Santiago Betancor

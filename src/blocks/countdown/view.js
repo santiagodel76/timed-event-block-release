@@ -4,18 +4,30 @@ function formatCountdown( totalSeconds, showDays, separator, labels ) {
 	const hours = Math.floor( ( safeSeconds % 86400 ) / 3600 );
 	const minutes = Math.floor( ( safeSeconds % 3600 ) / 60 );
 	const seconds = safeSeconds % 60;
-	const pad = ( value ) => String( value ).padStart( 2, '0' );
+	const raw = ( value ) => String( value );
 	const dayLabel = labels?.day || 'd';
+	const dayLabelSingular = labels?.daySingular || dayLabel;
 	const hourLabel = labels?.hour || 'h';
+	const hourLabelSingular = labels?.hourSingular || hourLabel;
 	const minuteLabel = labels?.minute || 'm';
+	const minuteLabelSingular = labels?.minuteSingular || minuteLabel;
 	const secondLabel = labels?.second || 's';
+	const secondLabelSingular = labels?.secondSingular || secondLabel;
+	const unitLabel = ( value, plural, singular ) => ( value === 1 ? singular : plural );
 
-	if ( showDays ) {
-		return `${ days } ${ dayLabel }${ separator }${ pad( hours ) } ${ hourLabel }${ separator }${ pad( minutes ) } ${ minuteLabel }${ separator }${ pad( seconds ) } ${ secondLabel }`;
+	if ( showDays && days > 0 ) {
+		return `${ days } ${ unitLabel( days, dayLabel, dayLabelSingular ) }${ separator }${ raw( hours ) } ${ unitLabel( hours, hourLabel, hourLabelSingular ) }${ separator }${ raw( minutes ) } ${ unitLabel( minutes, minuteLabel, minuteLabelSingular ) }${ separator }${ raw( seconds ) } ${ unitLabel( seconds, secondLabel, secondLabelSingular ) }`;
 	}
 
-	const totalHours = Math.floor( safeSeconds / 3600 );
-	return `${ pad( totalHours ) } ${ hourLabel }${ separator }${ pad( minutes ) } ${ minuteLabel }${ separator }${ pad( seconds ) } ${ secondLabel }`;
+	if ( hours > 0 ) {
+		return `${ raw( hours ) } ${ unitLabel( hours, hourLabel, hourLabelSingular ) }${ separator }${ raw( minutes ) } ${ unitLabel( minutes, minuteLabel, minuteLabelSingular ) }${ separator }${ raw( seconds ) } ${ unitLabel( seconds, secondLabel, secondLabelSingular ) }`;
+	}
+
+	if ( minutes > 0 ) {
+		return `${ raw( minutes ) } ${ unitLabel( minutes, minuteLabel, minuteLabelSingular ) }${ separator }${ raw( seconds ) } ${ unitLabel( seconds, secondLabel, secondLabelSingular ) }`;
+	}
+
+	return `${ raw( seconds ) } ${ unitLabel( seconds, secondLabel, secondLabelSingular ) }`;
 }
 
 function updateCountdownNode( node ) {
@@ -35,9 +47,15 @@ function updateCountdownNode( node ) {
 	const showDays = node.dataset.showDays === '1';
 	const separator = node.dataset.separator || ':';
 	const dayLabel = node.dataset.dayLabel || 'd';
+	const dayLabelSingular = node.dataset.dayLabelSingular || '';
 	const hourLabel = node.dataset.hourLabel || 'h';
+	const hourLabelSingular = node.dataset.hourLabelSingular || '';
 	const minuteLabel = node.dataset.minuteLabel || 'm';
+	const minuteLabelSingular = node.dataset.minuteLabelSingular || '';
 	const secondLabel = node.dataset.secondLabel || 's';
+	const secondLabelSingular = node.dataset.secondLabelSingular || '';
+	const prefixLabel = node.dataset.prefixLabel || '';
+	const suffixLabel = node.dataset.suffixLabel || '';
 	const activeLabel = node.dataset.activeLabel || 'Active';
 	const endedLabel = node.dataset.endedLabel || 'Ended';
 	const activeColor = node.dataset.activeColor || '';
@@ -53,12 +71,19 @@ function updateCountdownNode( node ) {
 	}
 
 	if ( remaining > 0 ) {
-		textNode.textContent = formatCountdown( remaining, showDays, separator, {
+		const countdownText = formatCountdown( remaining, showDays, separator, {
 			day: dayLabel,
+			daySingular: dayLabelSingular,
 			hour: hourLabel,
+			hourSingular: hourLabelSingular,
 			minute: minuteLabel,
+			minuteSingular: minuteLabelSingular,
 			second: secondLabel,
+			secondSingular: secondLabelSingular,
 		} );
+		const prefixText = prefixLabel ? `${ prefixLabel } ` : '';
+		const suffixText = suffixLabel ? ` ${ suffixLabel }` : '';
+		textNode.textContent = `${ prefixText }${ countdownText }${ suffixText }`;
 		textNode.style.color = '';
 		return;
 	}
@@ -88,3 +113,4 @@ if ( document.readyState === 'loading' ) {
 } else {
 	mountCountdowns();
 }
+

@@ -26,17 +26,41 @@
       "type": "string",
       "default": "d"
     },
+    "dayLabelSingular": {
+      "type": "string",
+      "default": ""
+    },
     "hourLabel": {
       "type": "string",
       "default": "h"
+    },
+    "hourLabelSingular": {
+      "type": "string",
+      "default": ""
     },
     "minuteLabel": {
       "type": "string",
       "default": "m"
     },
+    "minuteLabelSingular": {
+      "type": "string",
+      "default": ""
+    },
     "secondLabel": {
       "type": "string",
       "default": "s"
+    },
+    "secondLabelSingular": {
+      "type": "string",
+      "default": ""
+    },
+    "prefixLabel": {
+      "type": "string",
+      "default": ""
+    },
+    "suffixLabel": {
+      "type": "string",
+      "default": ""
     },
     "activeLabel": {
       "type": "string",
@@ -86,3 +110,4 @@
   "viewScript": "file:./view.js",
   "render": "file:./render.php"
 }
+
